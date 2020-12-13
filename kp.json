@@ -1,0 +1,325 @@
+{
+    "metadata": {
+        "name": "Frost and Gunfire",
+        "version": "",
+        "url": "https://modworkshop.net/mod/25607"
+    },
+    "items": {
+        "kp:gold_chainz": {
+            "name": "Gold Chainz",
+            "notes": "Money increases the chances of firing extra bullets. Has a 50% cap."
+        },
+		"kp:afflicted_ammolet": {
+            "name": "Afflicted Ammolet",
+            "notes": "Blanks fear nearby enemies for three seconds. Grants one extra blank per floor. Grants one curse"
+        },
+		 "kp:rusty_ammolet": {
+            "name": "Rusty Ammolet",
+            "notes": "Blanks cripple enemies for a short duration. Crippled enemies can’t attack while crippled. Grants one extra blank per floor. Grants one curse"
+        },
+		 "kp:slime_ammolet": {
+            "name": "Slime Ammolet",
+            "notes": "Blanks slow nearby enemies for three seconds. Grants one extra blank per floor."
+        },
+		"kp:blamulet": {
+            "name": "Blamulet",
+            "notes": "Upon taking damage or using a blank, an explosion is set off at the player’s location. This explosion doesn’t harm the player."
+        },
+		"kp:penguin": {
+            "name": "Penguin",
+            "notes": "Summons a penguin familiar that hurls snowballs at enemies."
+        },
+		"kp:holy_rounds": {
+            "name": "Holy Rounds",
+            "notes": "Resets the owner's curse when picked up. While held, the owner can’t gain any curse. +10% reload speed and +10% damage."
+        },
+		"kp:longshot": {
+            "name": "Longshot",
+            "notes": "Doubles the range of weapons."
+        },
+		"kp:mirror_guon_stone": {
+            "name": "Mirror Guon Stone",
+            "notes": "Grants the player a guon stone that reflects bullets."
+        },
+		"kp:cursed_cylinder": {
+            "name": "Cursed Cylinder",
+            "notes": "Upon reloading, nearby enemies are feared for three seconds. Has a 10 second cooldown."
+        },
+		"kp:table_tech_life": {
+            "name": "Table Tech Life",
+            "notes": "Flipping a table creates a table companion that blocks shots and shoots."
+        },
+		"kp:trash_bag": {
+            "name": "Trash Bag",
+            "notes": "Upon clearing a room, there is an 8% chance junk will spawn. Junk increases ammo capacity by 10%. Grants an active item slot."
+        },
+		"kp:void_bullets": {
+            "name": "Void Bullets",
+            "notes": "Shots have a chance to shoot black holes."
+        },
+		"kp:wisper": {
+            "name": "Wisper",
+            "notes": "Reveals all secret rooms. Reveals if a chest has a gun or item in it."
+        },
+		"kp:pure_flower": {
+            "name": "Pure Flower",
+            "notes": "Grants the player a random aura on room clear. Breaks upon dropping. Red: 20% damage, rate of fire, and projectile size up. / Blue: 20% chance to negate damage. 20% dodge roll Speed up, negates pit and contact damage. / Yellow: 100% movement speed up, 20% projectile speed up, 20% reload speed up. / White: 40% accuracy up, 2 Coolness, 35% Money gained from enemies."
+        },
+		"kp:table_tech_petrify": {
+            "name": "Table Tech Petrify",
+            "notes": "Flipping a table creates a shockwave that petrifies enemies. Has an internal cooldown of 12 seconds."
+        },
+		"kp:blue_balloon": {
+            "name": "Blue Balloon",
+            "notes": "Summons a Balloon familiar. When it pops, it activates a blank effect. Respawns a couple rooms after it's destroyed. This item can’t be dropped."
+        },
+		"kp:ice_tray": {
+            "name": "Ice Tray",
+            "notes": "Upon clearing a room there is a chance Ice will spawn. Ice reduces the cooldown of an active item by %."
+        },
+		"kp:medal_of_perfection": {
+            "name": "Medal of Perfection",
+            "notes": "Raises multiple stats. If the player gets hit, the player loses the stats bonuses and gains 2 Curse."
+        },
+		"kp:frost_armor": {
+            "name": "Frost Armor",
+            "notes": "Upon being hit, reduces an active items’s cooldown by 45%. Grants one armor on pickup."
+        },
+		"kp:b.f.o": {
+            "name": "B.F.O",
+            "notes": "Summons a UFO companion that blocks shots. Upon entering a room, a random enemy will be tinted red. Tinted enemies have half health. When a tinted enemy is killed, after a short duration, another enemy will be tinted. If the enemy tinted is a boss, the boss’s max health is reduced by 30%."
+        },
+		"kp:toy_chest": {
+            "name": "Toy Chest",
+            "notes": "Drops a random pickup every 4 rooms."
+        },
+		"kp:squire": {
+            "name": "Squire",
+            "notes": "Summons a Knight familiar. When in combat, the Knight will summon a shield at the player’s location about every 4 seconds."
+        },
+		"kp:locked_armor": {
+            "name": "Locked Armor",
+            "notes": "Grants two keys on pickup. While the player has at least one key, instead of taking damage, a key is lost."
+  
+      },
+kp:ratdie_virus": {
+            "name": "RatDie Virus",
+            "notes": "Spawns a pool of poison upon killing an enemy. Grants poison immunity."
+        },
+kp:baby_good_cannon_kin": {
+            "name": "Baby Good Cannon Kin",
+            "notes": "Spawns a Cannon Kin familiar that shoots rockets at enemies. These rockets can hurt the player."
+        },
+kp:devil's_discount": {
+            "name": "Devil's Discount",
+            "notes": "Spawns a Cannon Kin familiar that shoots rockets at enemies. These rockets can hurt the player."
+        },
+
+		"kp:potion_of_gun_swiftness": {
+            "name": "Potion of Gun Swiftness",
+            "notes": "On use: The player no longer has to reload. Doubles fire rate, projectile speed, and range."
+        },
+		"kp:crystal_die": {
+            "name": "Crystal Die",
+            "notes": "Has 3 uses. Does a random effect on use. The possible effects are: Bargained: 15% shop discount. / Cursed: 1-5 curse up. / Loser: The item destroys itself. / Junked: Spawns three pieces of Junk. / Gifted: Spawns a random chest. / Robbed: Takes between 20-80 casings. / Traded: Trades the Crystal Die for a different C tier item. / Buffed: Buffs reload speed, damage, and rate of fire. / Damaged: Deals one heart of damage. / Blessed: Removes 1-3 curse. / Healed: Heals 1-4 hearts. / Armored: Grants 1-3 pieces of armor. / Limited: Ammo capacity down by 20%. / Reloaded: Grants ammo. / Mo‘ Money: Grants 20-60 casings. / Nothing: Yup. Sure is nothing. / Emptied: Empties the current gun’s ammo."
+        },
+		"kp:broken_duplicator": {
+            "name": "Broken Duplicator",
+            "notes": "On use: Has a 65% chance to spawn a chest when near one. Has a 35% to backfire horribly (explode and give Curse)."
+        },
+
+		"kp:smelter": {
+            "name": "Smelter",
+            "notes": "On use: Converts two blanks to one armor."
+        },
+		"kp:pocket_pistol": {
+            "name": "Pocket Pistol",
+            "notes": "On use: Shoots a small projectile that scales with damage. Has 150 uses."
+        },
+		"kp:emergency_supplies": {
+            "name": "Emergency Supplies",
+            "notes": "One time use. On use: Spawns half a heart, 1 armor, ammo, 1 blank, 1 key, and a Glass Guon Stone."
+        },
+		"kp:spent_sack": {
+            "name": "Spent Sack",
+            "notes": "Upon firing a weapon there is a low chance to fill up this sack. When the item reaches over 15 stacks, it can convert all stacks into ammo. Can't be used on infinite ammo guns. The number of max stacks is 70."
+        },
+		"kp:super_shroom": {
+            "name": "Super Shroom",
+            "notes": "On use: Enlarges enemies by 50%. Enlarged enemies are slowed by 25%."
+        },
+		"kp:void_chest": {
+            "name": "Void Chest",
+            "notes": "When used, it sucks up a nearby consumable, adding to number of stacks. When the chest hits a certain number of stacks, it spawns a random chest."
+        },
+		"kp:ibuy": {
+            "name": "iBuy",
+            "notes": "Allows the player to sell any item on the ground. The amount of casings gained varies per tier."
+        },
+	"kp:#item_string_not_found": {
+            "name": "#ITEM_STRING_NOT_FOUND",
+            "notes": "Does a random active effect."
+        },
+
+		"kp:bloodied_key": {
+            "name": "Bloodied Key",
+            "notes": "Allows the player to open a locked chest at the cost of one and a half heart. Grants an active item slot."
+        },
+		"kp:flamethrower": {
+            "name": "Flamethrower",
+            "notes": "1500 ammo. Shoots fire at a fast speed in a low range."
+        },
+		"kp:build-a-gun": {
+            "name": "Build-A-Gun",
+            "notes": "200 ammo, 6 shots per clip. It has a lot of synergies."
+        },
+		"kp:big_sniper_rifle": {
+            "name": "Big Sniper Rifle",
+            "notes": "80 ammo, 8 shots per clip. Reloading near Sniper Shells and Professionals will suck them, instantly killing them and restoring 1 ammo."
+        },
+"kp:remote_detonator": {
+            "name": "Remote Detonator",
+            "notes": "40 ammo. Spawns rockets at the player's cursor location. These rockets can hurt the player."
+        },
+"kp:biggunron_sword": {
+            "name": "Biggunron Sword",
+            "notes": "250 ammo. Dude it's a sword. Grants 2.5 curse."
+		"kp:orbiter": {
+            "name": "Orbiter",
+            "notes": "400 ammo. Shoots bullets that orbit the player."
+        },
+		"kp:the_core": {
+            "name": "The Core",
+            "notes": "420 ammo, 18 shots per clip, 3 shot burst. Sets enemies on fire."
+        },
+		"kp:drawn": {
+            "name": "Drawn",
+            "notes": "200 ammo, 7 shots per clip. Slows enemies."
+        },
+		"kp:elemental_force": {
+            "name": "Elemental Force",
+            "notes": "440 ammo, 8 shots per clip, 4 shot burst. Shoots shotgun-like burst."
+        },
+		"kp:handgun": {
+            "name": "Handgun",
+            "notes": "100 ammo, 10 shots per clip. Shoots exploding fingers."
+        },
+		"kp:frostfire": {
+            "name": "Frostfire",
+            "notes": "300 ammo, 14 shots per clip. Shots freeze and burn enemies."
+        },
+		"kp:r.n.gun": {
+            "name": "R.N.GUN",
+            "notes": "200 ammo. Fires randomly generated bullets. Upon reloading, clip size is also randomly generated."
+        },
+		"kp:beastly_pistol": {
+            "name": "Beastly Pistol",
+            "notes": "400 ammo, 8 shots per clip. Increases projectile stats for each enemy in a room."
+        },
+		"kp:rage_rifle": {
+            "name": "Rage Rifle",
+            "notes": "460 ammo, 20 shots per clip. Damage increases with curse."
+        },
+		"kp:graviton": {
+            "name": "Graviton",
+            "notes": "321 ammo, 10 shots per clip. Shot bullets stay in place until the player reloads."
+        },
+		"kp:hotshot": {
+            "name": "Hotshot",
+            "notes": "300 ammo, 5 shots per clip. Upon reloading an empty clip, fires a fireball."
+        },
+		"kp:icepick": {
+            "name": "Icepick",
+            "notes": "250 ammo, 7 shots per clip. Shoots piercing icicles."
+        }
+    },
+	"synergies": {
+        "Throne Butt": {
+            "notes": "Reload speed is increased."
+        },
+		"Adhesive": {
+            "notes": "Blanks leave poison goop."
+        },
+		"Happy Sleet": {
+            "notes": "Penguin's snowballs are larger and deal more damage."
+        },
+		"Blursed Bullets": {
+            "notes": "+40% damage."
+        },
+		"Quick Scope": {
+            "notes": "Reload speed is increased."
+        },
+		"Devolved": {
+            "notes": "Tables become more aggressive and tankier."
+        },
+		"One Man's Treasure": {
+            "notes": "Ammo capacity is increased by 100%."
+        },
+		"Inspiral": {
+            "notes": "The chance of firing a black hole rises."
+        },
+		"Afterblam": {
+            "notes": "The max stats on the Pure Flower increase."
+        },
+		"What's Up": {
+            "notes": "The player gains flight, while the Blue Balloon is alive."
+        },
+		"Happy Blankday": {
+            "notes": "The Blue Balloon has a very small chance to drop a blank when destroyed."
+        },
+		"Ice Is Nice": {
+            "notes": "Ice reduces the cooldown of active items by 35%."
+        },
+		"Refilled Trays": {
+            "notes": "The max ammo of the Glacier is increased."
+        },
+		"Big Blam": {
+            "notes": "Upon activating the Blamulet’s effect a bomb is dropped at the player’s location."
+        },
+		"My New Favorite Toy": {
+            "notes": "Enemies marked by B.F.O have a low chance to drop pickups."
+        },
+		"R.N.GOD": {
+            "notes": "The max stats on the R.N.GUN increase."
+        },
+		"Blast Powered": {
+            "notes": "The Smelter only costs one blank to use."
+        },
+		"Pretty Boy": {
+            "notes": "The Pocket Pistol has a small chance to refund it’s charges."
+        },
+		"Pocket Shotgun": {
+            "notes": "The Pocket Pistol transforms into the Pocket Shotgun and shoots multiple bullets."
+        },
+		"Sack Pack": {
+            "notes": "The number of max stacks Spent Sack can have is increased to 100."
+        },
+		"Let's A Go!": {
+            "notes": "Shot size is increased by 50%"
+        },
+		"Fly Me To The Sun": {
+            "notes": "The Core’s projectile speed is doubled and damage is increased by 50%."
+        },
+		"Pen To Paper": {
+            "notes": "The Drawn has a low chance to shoot Origuni shots."
+        },
+		"MMMMMM MMMMMM!!!": {
+            "notes": "The player gains fire immunity."
+        },
+		"Bloodlust": {
+            "notes": "The stat gain of Beastly Pistol is increased."
+        },
+		"I HATE THIS GAME!!!!": {
+            "notes": "Damage and shot size is increased."
+        },
+		"Orbital Velocity": {
+            "notes": "The speed of the Orbiter’s bullets is increased."
+        },
+		"Around The World": {
+            "notes": "The Orbiter has a chance to shoot the Mars projectile."
+        },
+		"Unsealed": {
+            "notes": "The player has 30% chance to negate the key loss penalty from Locked Armor."
+        }
+    }
+}

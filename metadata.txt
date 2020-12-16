@@ -1,0 +1,7 @@
+Name: FrostAndGunfireItems
+Version: 1.0
+Author: Neigborino
+
+DLL: FrostAndGunfireItems.dll
+
+Depends: Base 0.2

@@ -11,38 +11,35 @@ using Random = UnityEngine.Random;
 using CustomShrineController = GungeonAPI.ShrineFactory.CustomShrineController;
 using FloorType = Dungeonator.CellVisualData.CellFloorType;
 using ItemAPI;
+using FrostAndGunfireItems;
 
 namespace GungeonAPI
 {
     public static class RoomFactory
     {
         public static Dictionary<string, RoomData> rooms = new Dictionary<string, RoomData>();
-        //public static string roomDirectory = Path.Combine(ETGMod.GameFolder, "CustomRoomData").Replace('/', Path.DirectorySeparatorChar);
+        public static bool ImAddingThisBoolBecauseImLazy;
         private static readonly string dataHeader = "***DATA***";
         private static FieldInfo m_cellData = typeof(PrototypeDungeonRoom).GetField("m_cellData", BindingFlags.Instance | BindingFlags.NonPublic);
         private static RoomEventDefinition sealOnEnterWithEnemies = new RoomEventDefinition(RoomEventTriggerCondition.ON_ENTER_WITH_ENEMIES, RoomEventTriggerAction.SEAL_ROOM);
         private static RoomEventDefinition unsealOnRoomClear = new RoomEventDefinition(RoomEventTriggerCondition.ON_ENEMIES_CLEARED, RoomEventTriggerAction.UNSEAL_ROOM);
-
-        public static string RoomDirectory()
-        {
-            return Path.GetFullPath(Path.Combine(ETGMod.GameFolder, "Mods/FrostAndGunfireItems"));
-        }
-
         public static void LoadRoomsFromRoomDirectory()
         {
-            string roomDirectory = RoomDirectory();
-            string unzippedDirectory = Path.GetFullPath(Path.Combine(ETGMod.GameFolder, "Mods/FrostAndGunfireItems/rooms"));
-           // Tools.PrintNoID(unzippedDirectory);
-            if (File.Exists(roomDirectory + ".zip"))
+            string roomDirectory = FrostandGunFireItems.ZipFilePath;
+            string unzippedDirectory = FrostandGunFireItems.FilePath;
+
+            if (File.Exists(roomDirectory))
             {
-                using (ZipFile zip = ZipFile.Read(roomDirectory + ".zip"))
+              
+                using (ZipFile zip = ZipFile.Read(roomDirectory))
 
                     foreach (ZipEntry f in zip.Entries)
                     {
-                        var fileName = Path.GetFileNameWithoutExtension(f.FileName);
-                        if (fileName.Contains("rooms"))
+                        if (f.FileName.Contains("rooms") && !ImAddingThisBoolBecauseImLazy)
                         {
-                            var roomData = BuildFromZipFile(roomDirectory + ".zip");
+                            ImAddingThisBoolBecauseImLazy = true;
+                            Tools.PrintNoID("this is being read");
+                            var roomData = BuildFromZipFile(roomDirectory);
                             foreach (var roomsData in roomData)
                             {
                                 string name = roomsData.room.name;
@@ -173,7 +170,7 @@ namespace GungeonAPI
                     AddEnemyToRoom(room, roomData.enemyPositions[i], roomData.enemyGUIDs[i], roomData.enemyReinforcementLayers[i], roomData.randomizeEnemyPositions);
                 }
             }
-
+            
             if (roomData.placeablePositions != null)
             {
                 for (int i = 0; i < roomData.placeablePositions.Length; i++)

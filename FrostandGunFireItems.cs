@@ -22,9 +22,12 @@ namespace FrostAndGunfireItems
 		public static bool LogoEnabled = false;
 		public static GameObject shrine;
 		public static AdvancedStringDB Strings;
+		public static string ZipFilePath;
+		public static string FilePath;
+
 		public override void Init()
 		{
-
+			SaveAPIManager.Setup("kp");
 		}
 
 
@@ -38,31 +41,14 @@ namespace FrostAndGunfireItems
 				LogoEnabled = true;
 			}
 		}
-	
-			// Token: 0x060000E8 RID: 232 RVA: 0x00009624 File Offset: 0x00007824
-			public override void Start()
+
+		// Token: 0x060000E8 RID: 232 RVA: 0x00009624 File Offset: 0x00007824
+		public override void Start()
 		{
-			
-			AdvancedGameStatsManager.AdvancedGameSave = new SaveManager.SaveType
-			{
-				filePattern = "Slot{0}.advancedSave",
-				encrypted = true,
-				backupCount = 3,
-				backupPattern = "Slot{0}.advancedBackup.{1}",
-				backupMinTimeMin = 45,
-				legacyFilePattern = "advancedGameStatsSlot{0}.txt"
-			};
-			for (int i = 0; i < 3; i++)
-			{
-				SaveManager.SaveSlot saveSlot = (SaveManager.SaveSlot)i;
-				Tools.SafeMove(Path.Combine(SaveManager.OldSavePath, string.Format(AdvancedGameStatsManager.AdvancedGameSave.legacyFilePattern, saveSlot)), Path.Combine(SaveManager.OldSavePath,
-					string.Format(AdvancedGameStatsManager.AdvancedGameSave.filePattern, saveSlot)), false);
-				Tools.SafeMove(Path.Combine(SaveManager.OldSavePath, string.Format(AdvancedGameStatsManager.AdvancedGameSave.filePattern, saveSlot)), Path.Combine(SaveManager.OldSavePath,
-					string.Format(AdvancedGameStatsManager.AdvancedGameSave.filePattern, saveSlot)), false);
-				Tools.SafeMove(Tools.PathCombine(SaveManager.SavePath, "01", string.Format(AdvancedGameStatsManager.AdvancedGameSave.filePattern, saveSlot)), Path.Combine(SaveManager.SavePath,
-					string.Format(AdvancedGameStatsManager.AdvancedGameSave.filePattern, saveSlot)), true);
-			}
-			AdvancedGameStatsManager.Init();
+
+
+			ZipFilePath = this.Metadata.Archive;
+			FilePath = this.Metadata.Directory + "/rooms";
 			FrostandGunFireItems.Strings = new AdvancedStringDB();
 			try
 			{
@@ -106,9 +92,12 @@ namespace FrostAndGunfireItems
 				Tools.Print("Failed to load shrineAPI", "FF0000", true);
 				Tools.PrintException(e);
 			}
-
-			//item and shit
-			ItemBuilder.Init();
+			//BehaviorSpeculator load = EnemyDatabase.GetOrLoadByGuid("465da2bb086a4a88a803f79fe3a27677").behaviorSpeculator;
+			//Tools.DebugInformation(load);
+				//item and shit
+				ItemBuilder.Init();
+			Hooks.Init();
+			EnemyTools.Init();
 			BigSniperRifle.Add();
 			AfflictedAmmolet.Init();
 			Flamethrower.Add();
@@ -166,17 +155,34 @@ namespace FrostAndGunfireItems
 			Headband.Init();
 			TableTechShame.Init();
 			RNGun.Add();
+			Sack.Init();
+			Greed.Init();
+			Barter.Init();
+			Chlorophyll.Init();
+			Fertilizer.Init();
+			Pods.Init();
+			SwindlersShotgun.Add();
 			//
 			//enemies
+			Milton.Init();
 			CannonKin.Init();
 			Silencer.Init();
 			MiniMushboom.Init();
 			Salamander.Init();
+			Ophaims.Init();
+			Spitfire.Init();
+			Shockbulon.Init();
+			Spitter.Init();
+			Mushboom.Init();
+			Firefly.Init();
+			Centipede.Init();
 			Shellet.Init();
-			//ReLoad.Init();
-			IronBlow.Init();
-			Summoner.Init();
+			Humphrey.Init();
+			//IronBlow.Init();
+			//Summoner.Init();
 			RoomMimic.Init();
+			
+
 			//unlockables
 			IceTray.Init();
 			Ice.Init();
@@ -198,7 +204,7 @@ namespace FrostAndGunfireItems
 			string b = AdvancedGameStatsManager.Instance.GetFlag(CustomDungeonFlags.DRAGUN_KILLED_AND_WANDERER) ? null : "-Defeat The Dragun As Either Wanderer\n";
 			string c = AdvancedGameStatsManager.Instance.GetFlag(CustomDungeonFlags.RAT_KILLED_AND_WANDERER) ? null : "-Defeat The Rat As Either Wanderer\n";
 			string d = AdvancedGameStatsManager.Instance.GetFlag(CustomDungeonFlags.CHALLENGE_MODE_AND_WANDERER) ? null : "-Beat Challenge Mode As Either Wanderer\n";
-			string x = AdvancedGameStatsManager.Instance.GetFlag(CustomDungeonFlags.BOSS_RUSH_AND_WANDERER) ? null : "-Beat Boss Rush As Either Wanderer\n";
+			string p = AdvancedGameStatsManager.Instance.GetFlag(CustomDungeonFlags.BOSS_RUSH_AND_WANDERER) ? null : "-Beat Boss Rush As Either Wanderer\n";
 			string f = AdvancedGameStatsManager.Instance.GetFlag(CustomDungeonFlags.BLESSED_AND_WANDERER) ? null : "-Beat Blessed Mode As Either Wanderer\n";
 			string g = AdvancedGameStatsManager.Instance.GetFlag(CustomDungeonFlags.BLESSED_AND_WANDERER) ? null : "-Defeat The Advanced Dragun As Either Wanderer\n";
 			string h = AdvancedGameStatsManager.Instance.GetFlag(CustomDungeonFlags.LICH_KILLED_AND_PILOT) ? null : "-Defeat The Lich As Pilot\n";
@@ -209,8 +215,8 @@ namespace FrostAndGunfireItems
 			string m = AdvancedGameStatsManager.Instance.GetFlag(CustomDungeonFlags.LICH_KILLED_AND_CONVICT) ? null : "-Defeat The Lich As Convict\n";
 			int num = UnityEngine.Random.Range(0, 2);
 			string color1 = num == 1 ? "33F0FF" : "FFAF33";
-			Tools.Print("Frost And Gunfire enabled. Enjoy the 1.0 Update!", color1);
-			Tools.PrintNoID("TODO List:\n" + b + c + d + x + f + g + h + z + j + k + l + m + a, color1);
+			Tools.Print("Frost And Gunfire enabled. Enjoy the 1.1 Update!", color1);
+			Tools.PrintNoID("TODO List:\n" + b + c + d + p + f + g + h + z + j + k + l + m + a, color1);
 			//
 			ETGModConsole.Commands.AddUnit("roomname", (args) =>
 			{

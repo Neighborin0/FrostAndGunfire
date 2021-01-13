@@ -78,6 +78,7 @@ namespace FrostAndGunfireItems
 				AkSoundEngine.PostEvent("Play_WPN_zapper_reload_01", base.gameObject);
 				stacks += 1;
 				IPlayerInteractable lastInteractable = user.GetLastInteractable();
+				IPlayerInteractable nearestInteractable = user.CurrentRoom.GetNearestInteractable(user.CenterPosition, 1f, user);
 				if (lastInteractable is HeartDispenser)
 				{
 					HeartDispenser exists = lastInteractable as HeartDispenser;
@@ -113,7 +114,9 @@ namespace FrostAndGunfireItems
 								AmmoPickup component2 = debrisObject2.GetComponent<AmmoPickup>();
 								KeyBulletPickup component3 = debrisObject2.GetComponent<KeyBulletPickup>();
 								SilencerItem component4 = debrisObject2.GetComponent<SilencerItem>();
-								if ((component && component.armorAmount == 0 && (component.healAmount == 0.5f || component.healAmount == 1f)) || component2 || component3 || component4)
+								PassiveItem component5 = debrisObject2.GetComponent<PassiveItem>();
+								PlayerItem playerItem = debrisObject2.GetComponent<PlayerItem>();
+								if ((component && component.armorAmount == 0 && (component.healAmount == 0.5f || component.healAmount == 1f)) || component2 || component3 || component4|| component5|| playerItem)
 								{
 									float num2 = Mathf.Sqrt(sqrMagnitude);
 									if (num2 < num && num2 < 5f)
@@ -125,13 +128,26 @@ namespace FrostAndGunfireItems
 							}
 						}
 					}
-					if (debrisObject)
+					if (nearestInteractable is Gun)
+					{
+						Gun gun = nearestInteractable as Gun;
+						if (gun.sprite)
+						{
+							tk2dSpriteCollectionData = gun.sprite.Collection;
+							spriteId = gun.sprite.spriteId;
+							position = gun.transform.position;
+						}
+						UnityEngine.Object.Destroy(gun.gameObject);
+					}
+						if (debrisObject)
 					{
 						HealthPickup component5 = debrisObject.GetComponent<HealthPickup>();
 						AmmoPickup component6 = debrisObject.GetComponent<AmmoPickup>();
 						KeyBulletPickup component7 = debrisObject.GetComponent<KeyBulletPickup>();
 						SilencerItem component8 = debrisObject.GetComponent<SilencerItem>();
-					
+						PassiveItem component9 = debrisObject.GetComponent<PassiveItem>();
+						PlayerItem playerItem2 = debrisObject.GetComponent<PlayerItem>();
+						Gun gun = debrisObject.GetComponent<Gun>();
 						if (component5)
 						{
 							if (component5.sprite)
@@ -186,6 +202,28 @@ namespace FrostAndGunfireItems
 							
 							UnityEngine.Object.Destroy(component8.gameObject);
 						}
+						else if (component9)
+						{
+							if (component9.sprite)
+							{
+								tk2dSpriteCollectionData = component9.sprite.Collection;
+								spriteId = component9.sprite.spriteId;
+								position = component9.transform.position;
+							}
+
+							UnityEngine.Object.Destroy(component9.gameObject);
+						}
+						else if (playerItem2)
+						{
+							if (playerItem2.sprite)
+							{
+								tk2dSpriteCollectionData = playerItem2.sprite.Collection;
+								spriteId = playerItem2.sprite.spriteId;
+								position = playerItem2.transform.position;
+							}
+
+							UnityEngine.Object.Destroy(playerItem2.gameObject);
+						}
 					}
 				}
 
@@ -236,11 +274,16 @@ namespace FrostAndGunfireItems
 		}
 		public override bool CanBeUsed(PlayerController user)
 		{
-			if(stacks < 5)
+			IPlayerInteractable nearestInteractable = user.CurrentRoom.GetNearestInteractable(user.CenterPosition, 1f, user);
+			if (stacks < 5)
 			{
 				if (!user)
 				{
 					return false;
+				}
+				if (nearestInteractable is Gun)
+				{
+					return true;
 				}
 				List<DebrisObject> allDebris = StaticReferenceManager.AllDebris;
 				if (allDebris != null)
@@ -257,7 +300,10 @@ namespace FrostAndGunfireItems
 								AmmoPickup component2 = debrisObject.GetComponent<AmmoPickup>();
 								KeyBulletPickup component3 = debrisObject.GetComponent<KeyBulletPickup>();
 								SilencerItem component4 = debrisObject.GetComponent<SilencerItem>();
-								if ((component && component.armorAmount == 0 && (component.healAmount == 0.5f || component.healAmount == 1f)) || component2 || component3 || component4)
+								PassiveItem component5 = debrisObject.GetComponent<PassiveItem>();
+								PlayerItem playerItem = debrisObject.GetComponent<PlayerItem>();
+								Gun gun = debrisObject.GetComponent<Gun>();
+								if ((component && component.armorAmount == 0 && (component.healAmount == 0.5f || component.healAmount == 1f)) || component2 || component3 || component4|| component5|| playerItem || gun)
 								{
 									float num = Mathf.Sqrt(sqrMagnitude);
 									if (num < 5f)
@@ -283,7 +329,6 @@ namespace FrostAndGunfireItems
 				}
 				return false;
 			}
-		
 			else
 			{
 				

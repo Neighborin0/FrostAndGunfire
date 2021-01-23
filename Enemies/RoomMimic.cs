@@ -36,37 +36,6 @@ namespace FrostAndGunfireItems
 			{
 				prefab = BossBuilder.BuildPrefab("Room Mimic", guid, spritePaths[0], new IntVector2(0, 0), new IntVector2(8, 9), false, true);
 				var companion = prefab.AddComponent<EnemyBehavior>();
-				SpriteBuilder.AddSpriteToCollection("FrostAndGunfireItems/Resources/RoomMimicIcon", SpriteBuilder.ammonomiconCollection);
-				if (companion.aiActor.GetComponent<EncounterTrackable>() != null)
-				{
-					UnityEngine.Object.Destroy(companion.aiActor.GetComponent<EncounterTrackable>());
-				}
-				companion.aiActor.encounterTrackable = prefab.AddComponent<EncounterTrackable>();
-				try
-				{
-				
-					FrostandGunFireItems.Strings.Enemies.Set("#ROOM_MIMIC", "Roomimic");
-					companion.aiActor.encounterTrackable = prefab.AddComponent<EncounterTrackable>();
-					companion.aiActor.encounterTrackable.journalData = new JournalEntry();
-					companion.aiActor.encounterTrackable.EncounterGuid = guid;
-					companion.aiActor.encounterTrackable.prerequisites = new DungeonPrerequisite[0];
-					companion.aiActor.encounterTrackable.journalData.SuppressKnownState = false;
-					companion.aiActor.encounterTrackable.journalData.IsEnemy = true;
-					companion.aiActor.encounterTrackable.journalData.SuppressInAmmonomicon = false;
-					companion.aiActor.encounterTrackable.ProxyEncounterGuid = "";
-					companion.aiActor.encounterTrackable.journalData.AmmonomiconSprite = "RoomMimicIcon";
-					companion.aiActor.aiActor.encounterTrackable.journalData.enemyPortraitSprite = ResourceExtractor.GetTextureFromResource("FrostAndGunfireItems/Resources/RoomMimicIcon.png");
-					companion.aiActor.OverrideDisplayName = "#ROOM_MIMIC";
-					companion.aiActor.encounterTrackable.journalData.PrimaryDisplayName = "#ROOM_MIMIC";
-					companion.aiActor.encounterTrackable.journalData.NotificationPanelDescription = "#ROOM_MIMIC";
-					companion.aiActor.encounterTrackable.journalData.AmmonomiconFullEntry = "#ROOM_MIMIC";
-					EnemyDatabase.GetEntry("Room Mimic").ForcedPositionInAmmonomicon = 24;
-					EnemyDatabase.GetEntry("Room Mimic").isInBossTab = true;
-				}
-				catch (Exception e)
-				{
-					Tools.PrintException(e);
-				}
 				companion.aiActor.knockbackDoer.weight = 200;
 				companion.aiActor.MovementSpeed = 2f;
 				companion.aiActor.healthHaver.PreventAllDamage = false;
